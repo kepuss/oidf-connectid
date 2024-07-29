@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ConnectID conformance test</title>
+</head>
+<body>
+
+<button id="oidf">Open OIDF site</button>
+<script>
+
+    var mockConfig = {
+    "alias": "conformance-python-1718588378",
+    "client": {
+        "certificate": "-----BEGIN CERTIFICATE-----\nMIIGXjCCBUagAwIBAgIUH9OI1CMLBWC9bB/dlelfxWEz2m4wDQYJKoZIhvcNAQEL\nBQAwczELMAkGA1UEBhMCQVUxKDAmBgNVBAoTH2VmdHBvcyBEaWdpdGFsIElkZW50\naXR5IFB0eSBMdGQxEjAQBgNVBAsTCWNvbm5lY3RpZDEmMCQGA1UEAxMdY29ubmVj\ndGlkIERFViBJc3N1aW5nIENBIC0gRzEwHhcNMjQwNjI0MDAxNDAwWhcNMjUwNzI0\nMDAxNDAwWjB/MQswCQYDVQQGEwJBVTESMBAGA1UEChMJY29ubmVjdGlkMS0wKwYD\nVQQLEyQ0NWRlMmFiYi04ZjU5LTQ1YmUtYmI5Ny1iMmE0MmNhNDIyZWUxLTArBgNV\nBAMTJDUzY2U2MGE1LWEyMjItNDMyMy1hYjZhLTlkYTc5ZjIyNDBkODCCASIwDQYJ\nKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMeiDqzp8mzmcf4zx1bEkU3DPy7WGopD\n+FEkIxZNBrt75khyeMjPrFlxvpyEQhmxahO8pLZk2smd8CbelBfkwRR/J19tyv1p\n/LizdGwOcvKEp8Y34KXWHmGMBDNzupuulHfHxkKSGP66Jq6QMrSp/cJsKqpMuxp+\n4z93qYoHQnkSrijEHmmiOMBwQQ26jXWlscCyck0m8rAK2lYCvpupQGVYSfxYn/3R\nBDzQo5CTDwT293XT4kn5dmeQtzJ3VqOFKqyiByFMx0K8ZuLEOQFgYn40nuFtgEDV\n2+/2oOylq3FvolpbZtzVr43pOSSl/aDtsiH742HlN1dZQf5PMc6sM2sCAwEAAaOC\nAtwwggLYMA4GA1UdDwEB/wQEAwIDqDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYB\nBQUHAwIwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQU1hAd+NwRlKluqBLIbqSCqEOZ\nwZEwHwYDVR0jBBgwFoAUYwPMkqTmRqaI26y5GiuIYDfUY08wQAYIKwYBBQUHAQEE\nNDAyMDAGCCsGAQUFBzABhiRodHRwOi8vb2NzcC5wa2kuZGV2LmNvbm5lY3RpZC5j\nb20uYXUwPwYDVR0fBDgwNjA0oDKgMIYuaHR0cDovL2NybC5wa2kuZGV2LmNvbm5l\nY3RpZC5jb20uYXUvaXNzdWVyLmNybDCCAdQGA1UdIASCAcswggHHMIIBwwYLKwYB\nBAGDui9sAQMwggGyMIIBbQYIKwYBBQUHAgIwggFfDIIBW1RoaXMgQ2VydGlmaWNh\ndGUgaXMgc29sZWx5IGZvciB1c2Ugd2l0aCBlZnRwb3MgRGlnaXRhbCBJZGVudGl0\neSBQdHkgTHRkIGFuZCBvdGhlciBwYXJ0aWNpcGF0aW5nIG9yZ2FuaXNhdGlvbnMg\ndXNpbmcgZWZ0cG9zIERpZ2l0YWwgSWRlbnRpdHkgUHR5IEx0ZCBzZXJ2aWNlcywg\nYXMgcHJvdmlkZWQgYnkgdGhlIGJ1c2luZXNzIGZyb20gdGltZSB0byB0aW1lLiBJ\ndHMgcmVjZWlwdCwgcG9zc2Vzc2lvbiBvciB1c2UgY29uc3RpdHV0ZXMgYWNjZXB0\nYW5jZSBvZiB0aGUgZWZ0cG9zIERpZ2l0YWwgSWRlbnRpdHkgUHR5IEx0ZCBDZXJ0\naWZpY2F0ZSBQb2xpY3kgYW5kIHJlbGF0ZWQgZG9jdW1lbnRzIHRoZXJlaW4uMD8G\nCCsGAQUFBwIBFjNodHRwOi8vcmVwb3NpdG9yeS5wa2kuZGV2LmNvbm5lY3RpZC5j\nb20uYXUvcG9saWNpZXMwDQYJKoZIhvcNAQELBQADggEBAJzEkuLMTOUVIZZSZXp4\nHQ+u0pAyZmBS1HovaFTALP+IoZi8VSb2ztA3KxBRc96ahRJxnolNc1gp0YBzO1pE\nmf65x4gXVgKBIjdiWLLSfNtPlzs5I6BkgSXtBs2Hul++S0u7YzAE23MySh7bgMug\natUkFVUXxHc2KFQO5gk69IU2+n0tW2wCcgFtI3FywxOuK9ozlJt8uq7YcvQyfRIW\nQTQUn5ber06KdkgJ0MLzqOl5fILTexGEx1djelG7NoKx5RAy5EumEUTlQ4UHzB/m\nvzdM+PQwwgQC4J9OO4b8jYZD+SJeIfhDDxTbw77C5//lZhx56vlXk8HulUzFsf7i\no8E=\n-----END CERTIFICATE-----",
+        "client_id": "https://rp.directory.dev.connectid.com.au/openid_relying_party/53ce60a5-a222-4323-ab6a-9da79f2240d8",
+        "jwks": {
+            "keys": [
+                {
+                    "kty": "RSA",
+                    "use": "sig",
+                    "x5c": [
+                        "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"
+                    ],
+                    "n": "lNqlPTegs4nObt2EyhZAKXmv9pLk5C5Yj2kVIGcGWqBgHM930WmIGf9JPr1oOf1jXa4elWoATLZiED5KjIKNM_Ye2rwizRLcKF0E-_3rexPVAsi2KhbjkOWofrRpUZASfHcWLwQTuDNXWtnYk-GDpFm83bsyxTmRTEerwzMSA4VxTdLSF5eVj-XX4Qnl5afTpYp6DabCvSElxMXPuS4DWV5l_eCerBKpcsj44U31sqr-f5nIwf6Fa42QhF2870FOJZyT8EV0EpXNjINpobII2lO-DH22IiUukgRKOVMoZ8Au-TYZc3tvwrwt8GBMjeoIiOGATFBl5XxyUUfWc1hvzQ",
+                    "e": "AQAB",
+                    "kid": "2xfRXrXAa5-7TpcQJXRrVt24JB_WQ_PYxRkr8vkps38",
+                    "x5u": "https://keystore.directory.dev.connectid.com.au/45de2abb-8f59-45be-bb97-b2a42ca422ee/53ce60a5-a222-4323-ab6a-9da79f2240d8/2xfRXrXAa5-7TpcQJXRrVt24JB_WQ_PYxRkr8vkps38.pem",
+                    "x5t#256": "2xfRXrXAa5-7TpcQJXRrVt24JB_WQ_PYxRkr8vkps38",
+                    "x5dn": "CN=53ce60a5-a222-4323-ab6a-9da79f2240d8,OU=45de2abb-8f59-45be-bb97-b2a42ca422ee,O=connectid,C=AU"
+                }
+            ]
+        },
+        "redirect_uri": "https://tpp.localhost:8443/cb"
+    },
+    "consent": {},
+    "description": "ConnectID Python SDK 2024-07-12",
+    "server": {
+        "jwks": {
+            "keys": [
+                {
+                    "p": "9ROiJdNH4qHPe4K92GpxUpQY2T2EP2KjbdOp16TFaL6DmXdZLaJzaYEpinR4NtSnuEpO2nl441_kma1JP99p6VdtmLUvTRUeCEUJXdFh_bqhc0INfGHRuXNBeLLQFcrRRS5Vhi50IM_NqYmpO1GEshxNYfKCweTCTkEwsJzIZkM",
+                    "kty": "RSA",
+                    "q": "nluxAF8DH-LhGz8qB3qzVhBaD7y5JB_pZ3SMaYPCV92yWXRysgNvYx2CyaWOtrIPabfzTBauR1XXEiLccxzQRy2f8bQ7pwJZtQJJtmC4UwCnNnIcdQ1WsjzzHMqd0p45gJQVnXpxmPfThIZeotToW4f4CTHZjJW8fKbd2zDg61U",
+                    "d": "a6N1dGahEGBMd9KYBbwyuliqebughkoNsUeBRFDg29wReDYDfxsCx9nIqS-xNtkkVQYdG7t8FKL8IVapbuJGFcLKvu_w6kbJ7v2csTN71DETrIH4W1xHlor0QuCShYdKeUG_xZjkBznVv8m_2FwzpRNo4WaVHQGwNoiBU5cIBmeA9XxlaGuabaagU6F0z4ArJzl0DIR6XjLYH8DTxb4KFuMvouBS_o9eDw-t1ubU5ffD28nyOY7UvSTd2_kUw4xyWqfyCvN5oTvFNFaJ8EmgkaycvPDkxqWIWOBRoCEk2gAz0UV14t4iPCV75czuA5dc9HlzAh57Ds3k3frm8jAUoQ",
+                    "e": "AQAB",
+                    "use": "sig",
+                    "kid": "ruWVspGvgNx3V22h4ufR9yr64sjuOaaVwDB_i5rwdOM",
+                    "qi": "0dm4Eb27B9VAP8SoXfE7aUSp0RimmBN3LKlucdL5h1LGyaCFNeRgYHJHo6BL33TKL-tL8m9y0ztyePtVe_EMGtP0QEws6oti8-SUK0ynQ4cXet8fH5uqJx-ArGgW_KDi3xvTeScy4faK3toyzStPZCG4jFdWyv1f2vbv4qg4rDU",
+                    "dp": "8fkPmK8yA6bl17nvvbTi7LjCjAN8BqVaXT6mK_9I1jF8d9Lp3u_NafcYT9bNNr3iV0gu8PEMldsBN2Zrsz_gL36d_C-wYzgdbebT56irSryxWb522D8wth0BIK3UXB_jXZ3w3UoSaK8kDWeZCrNjBASDttidl9lIq8Eb1NUH3Ec",
+                    "alg": "PS256",
+                    "dq": "TTdAc4HgsCecxABkqgj2cTy_7XSEgkzdLojx_nE0zktXr67MTmjGY3n8T_7eO89PHKmJhMx6ZmZA3KMLA0ZFeK-SkfTkMWc__rcC4l7_AdoLrsyte5XpdDesA5n4or5sI3oRoBwYUBJnnPM4KgXO1vLRywn3nklVAyMKgtqukZE",
+                    "n": "l5nlgOnp5m-klhQGYjcxytnu-vM6CpPFyhzuLII31Y4JT2sJjpItN4DOWRVs5sWL7aj_otQNYWrBz9JJOUJJ2oGIQDq2UBn9nHDTKqCWCZ8r2Gtq9U7z-mFfHx8f67hY6KFmeuMdVcqCBcNN76ZHtCkvRiziglvtYkMpovWF2cGqeyCuunlTr0clMe2N_iA0wOgLwiYDBtvqLi8DBshRcGzTHHlncW-OLdspu0saOb2igGMEaBAuzY2EsL0E2jZODB5bfPfA3WDuo7Swi2FVqDuaudm3pJofOr02lDidJNQCOBJRJhHVH867vFK12_xtgCDAydWn9qNub19nDwl1Pw"
+                }
+            ]
+        }
+    }
+    }
+
+var obj = {
+    "test_plan": "FAPI2-Message-Signing-ID1: Relying Party (client) test",
+    "sender_constraining": "mtls",
+    "client_authentication_type":"private_key_jwt",
+    "request_method":"signed_non_repudiation",
+    "fapi_client_type":"oidc",
+    "fapi_profile": "connectid_au",
+    "fapi_response_mode":"plain_response",
+    "json_config": JSON.stringify(mockConfig)
+    }
+
+const url = new URL('http://mock.oidf:8000/oidf_url.html');
+url.search = new URLSearchParams(obj);
+
+    const button_oidf = document.getElementById("oidf")
+
+    button_oidf.addEventListener('click', () => {
+        window.open(url, '_blank');
+    });
+
+</script>
+
+</body>
+</html>

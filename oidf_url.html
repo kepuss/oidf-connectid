@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>OIDF conformance test</title>
+</head>
+<body>
+<h1>This is conformance test plan creation page</h1>
+<p></p>
+<pre></pre>
+</body>
+</html>
+<script>
+    window.onload = ()=>{
+        const params = Object.fromEntries(new URLSearchParams(location.search));
+        params.json_config = JSON.parse(params.json_config);
+        document.querySelector('pre').innerHTML = JSON.stringify(params, undefined, 2);
+    }
+</script>
